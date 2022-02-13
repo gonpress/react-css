@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 
 // import styles from "./Header.module.css";
 
@@ -25,9 +25,14 @@ const List = styled.ul`
   display:flex; 
 `;
 const Item = styled.li`
+    font-weight: bold;
+  font-size: 15px;
     width:80px;
     height:50px;
     text-align : center;
+    border-bottom: 3px solid
+      ${props => (props.selected ? "#3498db" : "transparent")};
+  transition: border-bottom 0.5s ease-in-out;
 `;
 
 // 리액트 컴포넌트 스타일화
@@ -38,18 +43,18 @@ const SLink = styled(Link)`
   justify-content: center;
 `;
 
-
 const Header = () => {
+    const {pathname} = useLocation();
     return (
         <HeaderNav>
             <List>
-                <Item>
+                <Item selected={pathname === "/"}>
                     <SLink to="/">Movies</SLink>
                 </Item>
-                <Item>
+                <Item selected={pathname === "/tv"}>
                     <SLink to="/tv">Tv</SLink>
                 </Item>
-                <Item>
+                <Item selected={pathname === "/search"}>
                     <SLink to="/search">Search</SLink>
                 </Item>
             </List>
