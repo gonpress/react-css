@@ -43,6 +43,9 @@ const SLink = styled(Link)`
   justify-content: center;
 `;
 
+// 지금상영작
+// 예정작
+//인기작 getPopular
 const Header = () => {
     const {pathname} = useLocation();
     return (
